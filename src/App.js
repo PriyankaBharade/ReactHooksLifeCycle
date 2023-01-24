@@ -1,23 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useState,useEffect } from "react";
+import Child from "./Child";
 function App() {
+  const [count,setCount]= useState(0);
+  useEffect(()=>{
+    document.title = "count is "+ count;
+  },[count===3])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Use Lifecycle Hooks in Functional Component</h1>
+      <Child count={count}/>
+      <button onClick={()=>{
+        setCount(count+1)
+      }}>Click Me {count}</button>
     </div>
   );
 }
